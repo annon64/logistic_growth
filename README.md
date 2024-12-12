@@ -8,13 +8,13 @@ plot_data.R
 
 The code below plots data from the experiment.csv file, which contains results from a single simulated experiment of Escherichia coli growth. Figure one displays bacterial population size (number of bacteria, N) and Time (t, in minutes), on the Y and X axes, respectively.
 
-The first graph exhibits a sigmoidal growth curve, where the population size is small and has negligible growth until approximately t = 1500, at which bacteria display a phase of exponential growth before plateauing at approximate t = 2400, where the bacterial population reaches carrying capacity (k). This logistic growth curve is common for simulations of bacterial growth and can be divided into the lag phase, where population size is small and growth is negligible, the exponential phase, where the population is large enough to substantially exploit available recourses, as seen in rapid increase in population size, followed by the stationary phase, whethere the population size meets carrying capacity.
+The first graph exhibits a sigmoidal growth curve, where the population size is small and has negligible growth until approximately t = 1500, at which bacteria display a phase of exponential growth before plateauing at approximate t = 2400, when the bacterial population reaches carrying capacity (k). This logistic growth curve is common for simulations of bacterial growth and can be divided into the lag phase, where population size is small and growth is negligible, the exponential phase, where the population is large enough to substantially exploit available recourses (as seen in rapid increase in population size), and finally followed by the stationary phase, whethere the population size meets carrying capacity and stabilises at this point.
 
 figure1: sigmoidal growth curve showing population size (N) on the y-axis and time (t) on the x-axis on a linear scale:
 
 ![](Figure1.png)
 
-The second plots the logarithm of N values over time to produce a semi-log plot, with a logarithmic-transformed Y-axis (log(N)), and linear X-axis (Time (min)). The semi-log plot shows a positive linear function from t = (0-2000), before remaining at a constant population size as t tends towards infinity. superimposing the three phases of logistic growth onto the semi-log plot, the linear function in the interval 0\<t\<2000 represents the exponential phase, and the constant growth rate seen from 2000\<t is the stationary phase.
+The second plots the logarithm of N values over  linear time to produce a semi-log plot, with a logarithmic-transformed Y-axis (log(N)), and linear X-axis (Time (min)). The semi-log plot shows a positive linear increase in log N from t = (0-2000), before remaining at a constant population size as t tends towards infinity. Analysing the semi-log plot in context of bacterial growth phases, the linear function in the interval 0\<t\<2000 represents the exponential phase, and the constant growth rate seen from 2000\<t is the stationary phase.
 
 figure2: Semi-log plot of the logistic growth data from the experiment.csv data:
 
