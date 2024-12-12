@@ -30,5 +30,7 @@ ggplot(aes(t,N), data = growth_data) +
 
   #scale_y_continuous(trans='log10')
 
-
+sink(file = "package-versions.txt")
+sessionInfo()
+sink()
 
