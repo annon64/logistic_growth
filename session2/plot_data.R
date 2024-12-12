@@ -18,9 +18,9 @@ ggplot(aes(t,N), data = growth_data) + # Plotting time (t) and population size (
   
   geom_point() + # Plotting individual data points
   
-  xlab("Time (min") + # adding x axis label
+  xlab("Time (min)") + # adding x axis label
   
-  ylab("Pop. Size (N)") + # adding y axis label
+  ylab("Population Size (N)") + # adding y axis label
   
   theme_bw() # creating a black and white theme  
 
@@ -32,9 +32,12 @@ ggplot(aes(t,N), data = growth_data) +
   
   xlab("Time (min)") +
   
-  ylab("Pop. Size (N)") +
+  ylab("Population Size (N)") +
   
   scale_y_continuous(trans='log10') + 
  
   theme_bw()
+
+
+
 

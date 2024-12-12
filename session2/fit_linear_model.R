@@ -31,3 +31,7 @@ data_subset2 <- growth_data %>% filter(t>2500)
 # N is set to 1 as t is large and N is modeled as a constant (representing progression towards carrying capacity)
 model2 <- lm(N ~ 1, data_subset2)
 summary(model2)
+
+sink(file = "package-versions.txt")
+sessionInfo()
+sink()
