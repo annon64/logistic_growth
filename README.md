@@ -8,13 +8,13 @@ plot_data.R
 
 The code below plots data from the experiment.csv file, which contains results from a single simulated experiment of Escherichia coli growth. Figure one displays bacterial population size (number of bacteria, N) and Time (t, in minutes), on the Y and X axes, respectively.
 
-The first graph exhibits a sigmoidal growth curve, where the population size is small and has negligible growth until approximately t = 1500, at which bacteria display a phase of exponential growth before plateauing at approximate t = 2400, when the bacterial population reaches carrying capacity (k). This logistic growth curve is common for simulations of bacterial growth and can be divided into the lag phase, where population size is small and growth is negligible, the exponential phase, where the population is large enough to substantially exploit available recourses (as seen in rapid increase in population size), and finally followed by the stationary phase, whethere the population size meets carrying capacity and stabilises at this point.
+The first graph exhibits a sigmoidal growth curve. The population size is small and has negligible growth until approximately t = 1500, at which bacteria display a phase of exponential growth before plateauing at approximately t = 2400, when the bacterial population reaches carrying capacity (k). This logistic growth curve is common for simulations of bacterial growth and can be divided into the lag phase, where population size is small and growth is negligible, the exponential phase, where the population is large enough to substantially exploit available recourses (as seen in rapid increase in population size), and finally followed by the stationary phase, whethere the population size meets carrying capacity and stabilises at this point, determined by the amount of nutrients available and available space for replication in the growth media solution.
 
 figure1: sigmoidal growth curve showing population size (N) on the y-axis and time (t) on the x-axis on a linear scale:
 
 ![](Figure1.png)
 
-The second plots the logarithm of N values over  linear time to produce a semi-log plot, with a logarithmic-transformed Y-axis (log(N)), and linear X-axis (Time (min)). The semi-log plot shows a positive linear increase in log N from t = (0-2000), before remaining at a constant population size as t tends towards infinity. Analysing the semi-log plot in context of bacterial growth phases, the linear function in the interval 0\<t\<2000 represents the exponential phase, and the constant growth rate seen from 2000\<t is the stationary phase.
+The second graph is a semi-log plot, which maps the logarithm of N values over linear time, with a logarithmic-transformed Y-axis (log(N)), and linear X-axis (Time (min)) The Y axis is converted using the log() function in R, which converts N values by the natural logarith, ln(). The semi-log plot shows a positive linear relationship between ln(N) and t from t = (0-2000), before plateuing to a constant population size as t tends towards infinity. When analysing the semi-log plot in context of bacterial growth phases, the linear function in the time interval 0 <t <2000 represents the exponential phase, and the constant growth rate seen from 2000\<t is the stationary phase.
 
 figure2: Semi-log plot of the logistic growth data from the experiment.csv data:
 
@@ -65,7 +65,7 @@ ggplot(aes(t,N), data = growth_data) +
 
 fit_linear_model.R
 
-The script, fit_linear_model.R, produces two distinct linear models for the semi-log data using the dplyr package. The models plot log_N and t as the response and explanatory variables, respectively. The filter() functiontion was used to separate the data by given values of large and small values of t. The script uses the lm() function to produce two linear models, model1 and model2, distinguished by the specified intervals of t for each model. Model1 the growth curve when t is small (t \< 1400), and model2 when t is large (t\>2500). These linear models approximate the exponential and stationary growth stages described above (model 1 and 2, respectively). For each model, the summary() function is run to produce slope and intercept estimates.
+The script, fit_linear_model.R, produces two distinct linear models based on specified time intervals for the semi-log data, using the dplyr package. The models plot log_N and t as the response and explanatory variables, respectively. The filter() functiontion is used to separate the data by given values of large and small values of t. The script uses the lm() function to produce two linear models, model1 and model2, distinguished by the specified intervals of t for each model. Model1 the growth curve when t is small (t \< 1400), and model2 when t is large (t\>2500). These linear models approximate the linea formulue for the exponential and stationary growth stages described above (model 1 and 2, respectively). For each model, the summary() function is run to display the slope and intercept estimates.
 
 The below code explains how the data was filtered to produce subsets and create the linear models:
 
@@ -109,7 +109,7 @@ summary(model2)
 
 plot_data_and_model.R
 
-The final script, plot_data_and_model.R, codes function (logistic_fun). The chosen parameters for the logistic growth function N0, r and K have been inserted from the linear approximation in section 2. The function superimposes the altered parameters onto growth data from the experiment.csv file. This allows us to visually compare is the model predictions match the simulated data in experiment.csv. The model predictions (red line) match the data well, suggesting the simulated Escherichia coli population follows a logistic growth pattern.
+The final script, plot_data_and_model.R, codes the function 'logistic_fun'. Specific parameters for the logistic growth function N0, r and K have been obtained from the linear approximation in section 2. The function superimposes the parameters onto growth data from the experiment.csv file to compare the parameters calculated by the linear model to the observed growth rates in teh experimental simulation. This allows us to visually compare if the model predictions match the simulated data in experiment.csv. The model predictions (red line) show a strong match to the black data points, suggesting the simulated _Escherichia coli_ population follows a logistic growth pattern.
 
 Figure3: Logistic function with parameters specified from the previous linear model plotted over experiment.csv data points
 
@@ -250,8 +250,8 @@ ggplot() +
   scale_y_continuous(trans = 'log10') + 
   xlab("Time (min)") + #label x-axis
   ylab("Population Size") +  #label y-axis
-  ggtitle("Comparison of Logistic and Exponential Growth") +  # Graph title
-  theme_bw()  # Use a black and white theme for the plot
+  ggtitle("Comparison of Logistic and Exponential Growth") +  # specifying the graph's title
+  theme_bw()  # Using a black and white theme for the plot
 ```
 
 ```{r}
